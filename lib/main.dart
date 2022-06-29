@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: SplashScreen(
-        seconds: 5,
-        navigateAfterSeconds: MyHomePage(title: 'Whatsapp clone'),
+        seconds: 2,
+        navigateAfterSeconds: HomePage(),
         title: new Text(
           'Splash Screen Example',
           style: new TextStyle(
@@ -40,8 +40,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-      title: Text(widget.title),
-    ));
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+    );
   }
 }
