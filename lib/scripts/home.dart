@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key});
+  HomePage({Key? key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +38,25 @@ class HomePage extends StatelessWidget {
             ),
           )
         ],
+        bottom: TabBar(
+          tabs: [
+            Tab(
+              icon: Icon(Icons.camera_alt),
+            ),
+            Tab(
+              child: Text("CHATS"),
+            ),
+            Tab(
+                child: Text(
+              "STATUS",
+            )),
+            Tab(
+                child: Text(
+              "CALLS",
+            )),
+          ],
+          indicatorColor: Colors.white,
+        ),
       ),
       body: Container(
         color: HexColor("#075E54"),
@@ -65,9 +84,9 @@ class HomePage extends StatelessWidget {
             //     ),
             //   ),
             // ),
-            subsection(subname: 'CHATS'),
-            subsection(subname: 'STATUS'),
-            subsection(subname: 'CALLS'),
+            // subsection(subname: 'CHATS'),
+            // subsection(subname: 'STATUS'),
+            // subsection(subname: 'CALLS'),
           ],
         ),
       ),
