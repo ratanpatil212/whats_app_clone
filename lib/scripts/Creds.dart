@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:whats_app_clone/scripts/home.dart';
 import 'package:whats_app_clone/route/route.dart' as route;
 import 'package:whats_app_clone/scripts/loginprocess.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:whats_app_clone/scripts/signupprocess.dart';
 
 class Credentials extends StatefulWidget {
@@ -15,6 +15,8 @@ class Credentials extends StatefulWidget {
 class _CredentialsState extends State<Credentials>
     with SingleTickerProviderStateMixin {
   late TabController _credsTabController;
+
+  final _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -33,6 +35,7 @@ class _CredentialsState extends State<Credentials>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text(
           "WhatsApp",
           style: TextStyle(

@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:whats_app_clone/scripts/Creds.dart';
 import 'package:whats_app_clone/route/route.dart' as route;
 
 class HomePage extends StatefulWidget {
@@ -15,6 +11,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+
+  String _popupTitle = '';
 
   @override
   void initState() {
@@ -30,23 +28,66 @@ class _HomePageState extends State<HomePage>
     super.dispose();
   }
 
+  List li = [
+    "New Group",
+    "New Broadcast",
+    "Linked Devices",
+    "Starred messages",
+    "Payments",
+    "Settings"
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text(
           "WhatsApp",
           style: TextStyle(
               color: Colors.white, fontSize: 22.0, fontWeight: FontWeight.w600),
         ),
-        actions: const <Widget>[
+        actions: [
           Padding(
             padding: EdgeInsets.only(right: 20.0),
             child: Icon(Icons.search),
           ),
-          Padding(
-            padding: EdgeInsets.only(right: 16.0),
-            child: Icon(Icons.more_vert),
+          PopupMenuButton<int>(
+            onSelected: (value) {
+              if (value == 5) {
+                Navigator.pushNamed(context, route.SettingsPage);
+              }
+            },
+            itemBuilder: (context) => [
+              // popupmenu item 1
+              const PopupMenuItem(
+                value: 1,
+                child: Text("New Group"),
+              ),
+              // popupmenu item 2
+              const PopupMenuItem(
+                value: 2,
+                child: Text("New Broadcast"),
+              ),
+              const PopupMenuItem(
+                value: 3,
+                child: Text("Linked Devices"),
+              ),
+              const PopupMenuItem(
+                value: 4,
+                child: Text("Starred messages"),
+              ),
+              const PopupMenuItem(
+                value: 4,
+                child: Text("Payments"),
+              ),
+              const PopupMenuItem(
+                value: 5,
+                child: Text("Settings"),
+              ),
+            ],
+            // offset: Offset(0, 50),
+            color: Colors.white,
+            elevation: 10,
           ),
         ],
         backgroundColor: HexColor("#075E54"),
