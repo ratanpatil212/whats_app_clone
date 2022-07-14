@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'scripts/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:whats_app_clone/route/route.dart' as route;
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -17,14 +23,16 @@ class MyApp extends StatelessWidget {
       ),
       home: SplashScreen(
         seconds: 2,
-        navigateAfterSeconds: HomePage(),
         title: new Text(
-          'Splash Screen Example',
+          'Welcome To WhatsApp',
           style: new TextStyle(
               fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.white),
         ),
-        backgroundColor: Colors.lightBlue[200],
+        backgroundColor: Colors.green,
+        loaderColor: Colors.transparent,
       ),
+      initialRoute: route.HomePagePage,
+      onGenerateRoute: route.controller,
     );
   }
 }

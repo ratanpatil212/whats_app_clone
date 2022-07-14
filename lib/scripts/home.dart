@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:whats_app_clone/scripts/Creds.dart';
+import 'package:whats_app_clone/route/route.dart' as route;
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -12,6 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -71,13 +75,13 @@ class _HomePageState extends State<HomePage>
         controller: _tabController,
         children: [
           Icon(Icons.camera_alt),
-          Text("Chat Screen"),
+          Text("CHATS Screen"),
           Text("Status Screen"),
           Text("Call Screen"),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => Navigator.pushNamed(context, route.CredsPage),
         child: Icon(Icons.message),
         backgroundColor: HexColor("#075E54"),
       ),
