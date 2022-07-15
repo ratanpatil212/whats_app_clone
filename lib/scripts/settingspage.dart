@@ -3,6 +3,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ritz/route/route.dart' as route;
 
 class SettingsList extends StatefulWidget {
   const SettingsList({Key? key}) : super(key: key);
@@ -20,47 +21,52 @@ class _SettingsListState extends State<SettingsList> {
       ),
       body: Column(
         children: [
-          Container(
-            height: 130,
-            child: Row(
-              children: [
-                Container(
-                  padding: EdgeInsets.all(12),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.black,
-                    radius: 40,
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Main Name",
-                      textAlign: TextAlign.left,
-                      style: GoogleFonts.baloo2(
-                        fontSize: 25,
-                        fontWeight: FontWeight.w300,
-                      ),
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, route.ProfilePage);
+            },
+            child: Container(
+              height: 130,
+              child: Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(12),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.black,
+                      radius: 40,
                     ),
-                    Text(
-                      "Bio",
-                      textAlign: TextAlign.left,
-                      style: GoogleFonts.baloo2(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 100),
-                  child: Icon(
-                    Icons.qr_code_2_outlined,
-                    size: 50,
                   ),
-                ),
-              ],
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Main Name",
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.baloo2(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                      Text(
+                        "Bio",
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.baloo2(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 100),
+                    child: Icon(
+                      Icons.qr_code_2_outlined,
+                      size: 50,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Container(

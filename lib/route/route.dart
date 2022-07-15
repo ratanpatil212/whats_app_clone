@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:whats_app_clone/scripts/Creds.dart';
-import 'package:whats_app_clone/scripts/home.dart';
-import 'package:whats_app_clone/main.dart';
-import 'package:whats_app_clone/scripts/loginprocess.dart';
-import 'package:whats_app_clone/scripts/settingspage.dart';
+import 'package:ritz/scripts/Creds.dart';
+import 'package:ritz/scripts/home.dart';
+import 'package:ritz/scripts/loginprocess.dart';
+import 'package:ritz/scripts/settingspage.dart';
+import 'package:ritz/scripts/subsettings/profilepage.dart';
 
 const String CredsPage = 'Creds';
 const String HomePagePage = 'Home';
 const String LoginPage = 'LoginProcess';
 const String SettingsPage = 'Settings';
+const String ProfilePage = 'Profile';
 
 Route<dynamic> controller(RouteSettings settings) {
   switch (settings.name) {
@@ -23,6 +24,9 @@ Route<dynamic> controller(RouteSettings settings) {
       break;
     case SettingsPage:
       return MaterialPageRoute(builder: (context) => SettingsList());
+      break;
+    case ProfilePage:
+      return MaterialPageRoute(builder: (context) => Profile());
     default:
       throw ('This page does not exist');
   }

@@ -1,9 +1,9 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:whats_app_clone/route/route.dart' as route;
-import 'package:whats_app_clone/scripts/loginprocess.dart';
-import 'package:whats_app_clone/scripts/signupprocess.dart';
+import 'package:ritz/route/route.dart' as route;
+import 'package:ritz/scripts/loginprocess.dart';
+import 'package:ritz/scripts/signupprocess.dart';
 
 class Credentials extends StatefulWidget {
   const Credentials({Key? key}) : super(key: key);

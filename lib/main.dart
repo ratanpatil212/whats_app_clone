@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whats_app_clone/route/route.dart' as route;
+import 'package:ritz/route/route.dart' as route;
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
