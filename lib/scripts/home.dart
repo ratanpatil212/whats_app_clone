@@ -3,7 +3,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:whats_app_clone/route/route.dart' as route;
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -11,8 +11,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-
-  String _popupTitle = '';
 
   @override
   void initState() {
@@ -123,8 +121,8 @@ class _HomePageState extends State<HomePage>
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, route.CredsPage),
-        child: Icon(Icons.message),
         backgroundColor: HexColor("#075E54"),
+        child: const Icon(Icons.message),
       ),
     );
   }

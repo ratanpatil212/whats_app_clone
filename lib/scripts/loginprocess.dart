@@ -46,7 +46,7 @@ class _loginFormState extends State<loginForm> {
           TextFormField(
             controller: _mypasscontroller,
             decoration: InputDecoration(
-              icon: Icon(Icons.password),
+              icon: const Icon(Icons.password),
               hintText: "Password",
             ),
           ),
@@ -61,13 +61,12 @@ class _loginFormState extends State<loginForm> {
                           email: _myusercontroller.text,
                           password: _mypasscontroller.text);
                   // .then((value) => print(value));
-                  if (user != null) {
-                    Fluttertoast.showToast(
-                        msg: 'User Identified Successfully',
-                        toastLength: Toast.LENGTH_SHORT);
-                    await Future.delayed(Duration(seconds: 1));
-                    Navigator.pushNamed(context, route.HomePagePage);
-                  }
+                  Fluttertoast.showToast(
+                      msg: 'User Identified Successfully',
+                      toastLength: Toast.LENGTH_SHORT);
+                  await Future.delayed(const Duration(seconds: 1));
+                  // ignore: use_build_context_synchronously
+                  Navigator.pushNamed(context, route.HomePagePage);
                 } on FirebaseAuthException catch (e) {
                   Fluttertoast.showToast(
                     msg: e.message.toString(),

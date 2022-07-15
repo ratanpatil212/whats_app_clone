@@ -1,8 +1,8 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:whats_app_clone/route/route.dart' as route;
 import 'package:whats_app_clone/scripts/loginprocess.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:whats_app_clone/scripts/signupprocess.dart';
 
 class Credentials extends StatefulWidget {
@@ -15,8 +15,6 @@ class Credentials extends StatefulWidget {
 class _CredentialsState extends State<Credentials>
     with SingleTickerProviderStateMixin {
   late TabController _credsTabController;
-
-  final _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -62,8 +60,8 @@ class _CredentialsState extends State<Credentials>
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, route.HomePagePage),
-        child: Icon(Icons.message),
         backgroundColor: HexColor("#075E54"),
+        child: const Icon(Icons.message),
       ),
     );
   }
