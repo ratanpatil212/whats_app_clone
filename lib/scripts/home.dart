@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:ritz/route/route.dart' as route;
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,14 +27,11 @@ class _HomePageState extends State<HomePage>
     super.dispose();
   }
 
-  List li = [
-    "New Group",
-    "New Broadcast",
-    "Linked Devices",
-    "Starred messages",
-    "Payments",
-    "Settings"
-  ];
+  Future<void> _signOut() async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.pushNamed(context, route.CredsPage);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,9 +118,11 @@ class _HomePageState extends State<HomePage>
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, route.CredsPage),
+        onPressed: () => {
+          _signOut().then((value) => print("Sign out success")),
+        },
         backgroundColor: HexColor("#075E54"),
-        child: const Icon(Icons.message),
+        child: Center(child: Text("Sign Out")),
       ),
     );
   }
