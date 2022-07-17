@@ -53,7 +53,42 @@ class _CredentialsState extends State<Credentials>
         child: TabBarView(
           controller: _credsTabController,
           children: [
-            loginForm(),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  loginForm(),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(8.0),
+                          margin: EdgeInsets.all(10),
+                          child: InkWell(
+                            onTap: () => {print("FB icon tapped")},
+                            child: Image.asset(
+                              "assets/smallicons/fbicon.png",
+                              height: 40,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(8.0),
+                          margin: EdgeInsets.all(10),
+                          child: InkWell(
+                            onTap: () => {print("Google icon tapped")},
+                            child: Image.asset(
+                              "assets/smallicons/googleicon.png",
+                              height: 40,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
             signUpProcess(),
           ],
         ),
@@ -61,7 +96,7 @@ class _CredentialsState extends State<Credentials>
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, route.HomePagePage),
         backgroundColor: HexColor("#075E54"),
-        child: const Icon(Icons.message),
+        child: Text("By pass login"),
       ),
     );
   }

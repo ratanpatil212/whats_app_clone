@@ -27,56 +27,61 @@ class _loginFormState extends State<loginForm> {
   Widget build(BuildContext context) {
     return Form(
       key: _formkey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          TextFormField(
-            controller: _myusercontroller,
-            decoration: InputDecoration(
-              icon: Icon(Icons.person),
-              hintText: "Username",
-            ),
-            validator: (value) {
-              if (value == null) {
-                return "Please enter some text";
-              }
-              return value;
-            },
-          ),
-          TextFormField(
-            controller: _mypasscontroller,
-            decoration: InputDecoration(
-              icon: const Icon(Icons.password),
-              hintText: "Password",
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(left: 50, right: 50),
-            child: ElevatedButton(
-              child: Text('Submit'),
-              onPressed: () async {
-                try {
-                  final user = await FirebaseAuth.instance
-                      .signInWithEmailAndPassword(
-                          email: _myusercontroller.text,
-                          password: _mypasscontroller.text);
-                  // .then((value) => print(value));
-                  Fluttertoast.showToast(
-                      msg: 'User Identified Successfully',
-                      toastLength: Toast.LENGTH_SHORT);
-                  await Future.delayed(const Duration(seconds: 1));
-                  // ignore: use_build_context_synchronously
-                  Navigator.pushNamed(context, route.HomePagePage);
-                } on FirebaseAuthException catch (e) {
-                  Fluttertoast.showToast(
-                    msg: e.message.toString(),
-                    toastLength: Toast.LENGTH_LONG,
-                  );
+      child: Container(
+        margin: EdgeInsets.only(top: 40, bottom: 40),
+        width: 300,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            TextFormField(
+              controller: _myusercontroller,
+              decoration: InputDecoration(
+                icon: Icon(Icons.person),
+                hintText: "Username",
+              ),
+              validator: (value) {
+                if (value == null) {
+                  return "Please enter some text";
                 }
+                return value;
               },
             ),
-          ),
-        ],
+            TextFormField(
+              controller: _mypasscontroller,
+              decoration: InputDecoration(
+                icon: const Icon(Icons.password),
+                hintText: "Password",
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 50, right: 50),
+              margin: EdgeInsets.all(15),
+              child: ElevatedButton(
+                child: Text('Submit'),
+                onPressed: () async {
+                  try {
+                    final user = await FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: _myusercontroller.text,
+                            password: _mypasscontroller.text);
+                    // .then((value) => print(value));
+                    Fluttertoast.showToast(
+                        msg: 'User Identified Successfully',
+                        toastLength: Toast.LENGTH_SHORT);
+                    await Future.delayed(const Duration(seconds: 1));
+                    // ignore: use_build_context_synchronously
+                    Navigator.pushNamed(context, route.HomePagePage);
+                  } on FirebaseAuthException catch (e) {
+                    Fluttertoast.showToast(
+                      msg: e.message.toString(),
+                      toastLength: Toast.LENGTH_LONG,
+                    );
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
